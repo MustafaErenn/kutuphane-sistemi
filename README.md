@@ -104,6 +104,6 @@ Resimde yer alan Running on … (http://127.0.0.1:5000/) kısmındaki yeri taray
 # Lisans ve İletişim
 Eki Üyeleri 
 - [@MustafaErenn](https://github.com/MustafaErenn)
-- [@MustafaErenn](https://github.com/MustafaErenn)
-- [@MustafaErenn](https://github.com/MustafaErenn)
-- [@MustafaErenn](https://github.com/MustafaErenn)
+- [@keremersu35](https://github.com/keremersu35)
+- [@Feerol](https://github.com/Feerol)
+- [@selcuksan](https://github.com/selcuksan)
