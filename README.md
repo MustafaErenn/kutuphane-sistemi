@@ -98,9 +98,12 @@ Veritabanının adı alttaki görselde belirtilen isimle aynı olmalıdır. Veri
 
 
 <img src="images/kurulum1.png">
-Resimde yer alan Running on …(http://127.0.0.1:5000/)kısmındaki yeri tarayıcınıza yapıştırın. Böylece sistemi kullanmaya başlayabilirsiniz.
+Resimde yer alan Running on … (http://127.0.0.1:5000/) kısmındaki yeri tarayıcınıza yapıştırın. Böylece sistemi kullanmaya başlayabilirsiniz.
 
 
 # Lisans ve İletişim
-Karakter tasarımları ve kodlar  [@MustafaErenn](https://github.com/MustafaErenn) tarafından yapılmıştır. 
-[Linkedin](https://www.linkedin.com/in/mustafa-eren-9214661b3/)
+Eki Üyeleri 
+- [@MustafaErenn](https://github.com/MustafaErenn)
+- [@MustafaErenn](https://github.com/MustafaErenn)
+- [@MustafaErenn](https://github.com/MustafaErenn)
+- [@MustafaErenn](https://github.com/MustafaErenn)
