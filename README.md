@@ -67,7 +67,7 @@ Kütüphanelerin üye ve kitap yönetim işlemlerini kolaylaştırmak.
 •	Üye Görüntüle ekranından sonra profil sayfasında yer alan Düzenle butonu ile üyenin kayıt olurkenki bilgilerini güncelleyebilirsiniz.
 
 ## Üye Kayıt Et
-<img src="images/uyeKayıtEt.png" >
+<img src="images/uyeKayitEt.png" >
 •	Üye kayıt ekranında kayıt olmak isteyen insanın bilgilerini girdikten sonra kayıt ederseniz kütüphaneniz 
 ve Kütüphane Yönetim Sisteminin diğer kütüphanelerine bir üye kayıt etmiş olursunuz ve kayıt olan üye kütüphaneden bağımsız olarak emanet işlemleri gerçekleştirebilir.
 
