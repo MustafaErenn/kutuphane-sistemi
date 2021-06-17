@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container" style="padding: 2%; background-color: #F6F6EB;" id="Arama">
+    <div class="card border-0">
+        <div style="padding: 2%; background-color: #F6F6EB;" class="card-body">
+            <form action="" method="GET">
+                <div class="input-group mt-3">
+                    <select class="form-control border-0" id="select" name="select">
+                        <option hidden>Seçin</option>
+                        <option {% if request.args.get('select')=='Baslik' %}selected{% endif %} value="Baslik">Eser Adı
+                        </option>
+
+                        <option {% if request.args.get('select')=='KITAPLAR.ISBN' %}selected{% endif %}
+                            value="KITAPLAR.ISBN">ISBN
+                        </option>
+
+                    </select>
+                </div>
+                <div class="input-group mt-3">
+                    <input class="form-control border-0" type="text" placeholder="Aramanızı Girin" id="data" name="data"
+                        {% if request.args.get('data') !=None %} value="{{request.args.get('data')}}" {% endif %} />
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary ml-3"
+                            formaction="{{url_for('search')}}">Kütüphanemde Ara</button>
+                        <button type="submit" class="btn btn-primary ml-3" formaction="{{url_for('searchAll')}}">Diğer
+                            Kütüphanelerde Ara</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="lister-item mode-advanced solid 2px p-3" style="margin-left: 20%; margin-right: 20%;">
+
+    {% if data %}
+    {% for i in data %}
+    <div class="lister-item-content">
+        <h3 class="lister-item-header">
+            <span class="text-primary">{{loop.index}}.</span>
+            <span style="color: #007BFF;">{{i['Baslik']}}</span>
+        </h3>
+        <p class="text-muted">
+            <span>{{i['Sayfa']}} Sayfa</span>
+            <span>|</span>
+
+            {% for kategori in i['kategorilerinTamami'] %}
+            <span>{{kategori}} /</span>
+            {% endfor %}
+
+        </p>
+        <p class="">
+            Yazar:
+            {% for yazar in i['yazarlarinTamami'] %}
+            <span style="color: #007BFF;">{{yazar}} / </span>
+            {% endfor %}
+
+            <span class="ghost">|</span>
+            Yayın Evi:
+            <span style="color: #007BFF;">{{i['Yayin']}}</span>
+            <span class="ghost">|</span>
+            ISBN:
+            <span style="color: #007BFF;">{{i['ISBN']}}</span>
+            <span class="ghost">|</span>
+            Kütüphane:
+
+            {% for kutuphane in i['kutuphaneAdi'] %}
+            <span style="color: #007BFF;">{{kutuphane}}</span>
+            {% endfor %}
+
+            <span class="ghost">|</span>
+        </p>
+    </div>
+    <div>
+        <a class="btn btn-primary" href="{{url_for('details', lib = i['KutuphaneID'] ,book =  i['ISBN'] )}}">Detay</a>
+    </div>
+    <hr>
+    {% endfor %}
+    <div style="text-align: right;">
+        <a href="#Arama" class="btn btn-primary">Başa Dön</a>
+    </div>
+    {% endif %}
+
+</div>
+
+
+{% endblock %}

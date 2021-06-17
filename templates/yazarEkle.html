@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+{% block content %}
+
+
+<div id='kitapDiv' class="container">
+
+    <div id='kitapDiv' class="container mt-4" style='display: flex;justify-content: center;align-items: center;'>
+        <div id='yazarEkleDiv' class="yazarEkle">
+
+            <div class="container mt-3" style="width: 25rem; text-align: center;">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{category}}" role="alert">
+                    {{message}}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+
+            <form id='yazarEkleForm' method="POST">
+                <div class="mb-3" style='width:25rem'>
+                    <label style='user-select:none' class="form-label">Yazar Adı</label>
+                    <input type="text" required class="form-control border-0" id="YazarName 1" name="YazarName"
+                        placeholder="Yazar adı giriniz">
+                </div>
+                <div class="mb-3" style='width:25rem'>
+                    <label style='user-select:none' class="form-label">Yazar Soyadı</label>
+                    <input type="text" class="form-control border-0" id="YazarSurname 1" name="YazarSurname"
+                        placeholder="Yazar soyadı giriniz">
+                </div>
+                <button id='YazalariKaydet' type="submit" class="btn btn-primary">Yazarı
+                    Kaydet</button>
+            </form>
+            <a id='topluKaydet' href="{{url_for('add')}}" class="btn btn-primary mt-3">Geri dön</a>
+
+        </div>
+
+        <br><br>
+
+    </div>
+
+</div>
+
+{% endblock %}

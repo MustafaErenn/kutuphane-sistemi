@@ -1,0 +1,76 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="container my-auto">
+    <div class="container mt-3" style="width: 25rem; text-align: center;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}}" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <form novalidate action="" method="POST">
+        <div id='kitapDiv' class="container">
+            <div id='yazarlarDiv' style='visibility: visible;'>
+                <label class="form-label">Yazarlar</label>
+                <input type="email" required list="yazarlist" multiple name="yazarlar" class="form-control border-0"
+                    placeholder="Yazar1,Yazar2">
+                <datalist class="form-select" name="yazarlar" id="yazarlist">
+                    <option disabled>Open this select menu</option>
+                    {% for yazar in yazarlar %}
+                    <option value="{{yazar['ad']}} {{yazar['soyad']}}"></option>
+                    {% endfor %}
+                </datalist>
+                <a href="{{url_for('yazarekle')}}" rel="noopener noreferrer"
+                    class="btn btn-primary mt-3 mb-3 float-right"
+                    title="İstediğiniz yazar listede yoksa ekleyin !">EKLE</a>
+            </div>
+            <div class="Kitap">
+                <div class="mb-3 float-left">
+                    <label for="KitapAdi" class="form-label">Kitap Adı</label>
+                    <input type="text" required class="form-control border-0" id="KitapAdi" name="KitapAdi"
+                        placeholder="Kitap Adı giriniz">
+                </div>
+                <div class="mb-3 float-right">
+                    <label for="KitapSayfaSayisi" class="form-label">Kitap Sayfa Sayısı</label>
+                    <input type="number" min="0" required class="form-control border-0" id="KitapSayfaSayisi"
+                        name="KitapSayfaSayisi" placeholder="Sayfa Sayısı giriniz">
+                </div>
+                <div class="mb-3 float-left">
+                    <label for="KitapYayin" class="form-label">Kitap Yayınevi</label>
+                    <input type="text" required class="form-control border-0" id="KitapYayin" name="KitapYayin"
+                        placeholder="Yayınevi giriniz">
+                </div>
+                <div class="mb-3 float-right">
+                    <label for="KitapISBN" class="form-label">Kitap ISBN</label>
+                    <input type="text" required class="form-control border-0" id="KitapISBN" name="KitapISBN"
+                        placeholder="ISBN giriniz">
+                </div>
+                <div class="mb-3 float-left">
+                    <label for="miktar" class="form-label">Miktar</label>
+                    <input type="number" required min="0" class="form-control border-0" id="miktar" name="miktar"
+                        placeholder="Miktar giriniz">
+                </div>
+
+                <div class="mb-3 float-right">
+                    <label class="form-label">Kategoriler</label> <br>
+                    <input type="email" required list="kategorilist" multiple name="kategoriler"
+                        class="form-control border-0" placeholder="Kategori Seçiniz">
+                    <datalist class="form-select" name="kategoriler" id="kategorilist">
+                        <option disabled>Open this select menu</option>
+                        {% for kategori in kategoriler %}
+                        <option value="{{kategori['ad']}}"></option>
+                        {% endfor %}
+                    </datalist>
+                </div>
+            </div>
+            <div>
+                <button id='topluKaydet' type="submit" class="btn btn-primary mt-3 align-center">Kaydet</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

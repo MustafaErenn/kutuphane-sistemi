@@ -1,0 +1,91 @@
+{% extends 'base.html'%}
+{% block content %}
+
+
+{% if details %}
+
+
+<div class="card-body d-flex flex-wrap" style="margin: 0px 15%">
+    <div class="card d-inline-block mx-auto my-0 border-0" style="width: 25rem">
+        <div class="card-header text-center border-0">
+            <h4>Kitap Bilgileri</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item border-0"><b>Kitap Adı: </b>{{details[0]['Baslik']}}</li>
+                <li class="list-group-item border-0"><b>ISBN: </b>{{details[0]['ISBN']}}</li>
+                <li class="list-group-item border-0"><b>Yazar: </b>
+                    {% for yazar in details[0]['yazarlarinTamami'] %}
+                    {{yazar}},
+                    {% endfor %}
+                </li>
+                <li class="list-group-item border-0"><b>Sayfa: </b>{{details[0]['Sayfa']}}</li>
+                <li class="list-group-item border-0"><b>Kategori: </b>
+                    {% for kategori in details[0]['kategorilerinTamami'] %}
+                    {{kategori}}/
+                    {% endfor %}
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="card d-inline-block mx-auto my-0 border-0" style="width: 25rem">
+        <div class="card-header text-center border-0">
+            <h4>Kütüphane Bilgileri</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item border-0"><b>Kütüphane Adı: </b>{{details[0]['kutuphaneAdi'][0]}}</li>
+                <li class="list-group-item border-0"><b>Adresi: </b>
+                    {% for adres in details[0]['kutuphaneTamAdresi'] %}
+                    {{adres}}
+                    {% endfor %}
+                </li>
+                <li class="list-group-item border-0"><b>Kitap Adedi: </b>{{details[0]['Miktar']}}</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+<div class="container mt-2" style="width: 30rem;">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{category}}" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    {% if session['kutuphane'] == details[0]['KutuphaneID'] %}
+    <form action="{{url_for('kitap_emanet', ISBN=details[0]['ISBN'])}}" method="POST">
+        <div class="form-group">
+            <label for="exampleInputEmail1">E-posta</label>
+            <input type="email" class="form-control border-0" id="uyeeposta" name="uyeeposta" placeholder="E-Posta">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Telefon</label>
+            <input type="tel" class="form-control border-0" id="uyetel" name="uyetel" placeholder="Telefon Numarası">
+        </div>
+
+
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Teslim Et</button>
+        </div>
+    </form>
+
+    {% endif %}
+
+</div>
+
+{% endif %}
+
+{% endblock %}

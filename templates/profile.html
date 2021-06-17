@@ -1,0 +1,124 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="card text-white m-2 mx-auto border-0" style="width: 55%; background-color: #f6f6eb">
+    <div class="card-header border-0 " style="color: #243a51">
+        <h3 class="card-title my-auto py-2">
+            <i class="fas fa-id-card"></i> {{uyeData['ad']}} {{uyeData['soyad']}}
+            {% if 'username' in session %}
+            <div>
+                <form action="{{ url_for('profile_edit')}}">
+                    <button class='btn btn-primary float-right' type='submit' name='edit' value="{{uyeData['eposta']}}">
+                        Düzenle
+                    </button>
+                </form>
+            </div>
+            {% endif %}
+        </h3>
+    </div>
+    <div class="card-body d-flex border-0" style="justify-content: space-between; background-color: white">
+        <div style="color: #243a51; margin: auto 0">
+
+            {% if uyeData %}
+            <h5 class="card-text mt-3">
+                <i class="fa fa-phone-square" aria-hidden="true"></i>
+                {{uyeData['telefon']}}
+            </h5>
+            <h5 class="card-text mt-3">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                {{uyeData['eposta']}}
+            </h5>
+            <h5 class="card-text mt-3 mb-3">
+                <i class="fas fa-map-marker-alt"></i>
+                {{uyeData['İkamet_Adresi']}}, {{uyeData['ilce']}}/{{uyeData['il']}}
+            </h5>
+            {% endif %}
+
+
+        </div>
+
+        <div>
+            <img src="http://akhisar11noluasm.net/wp-content/uploads/2018/04/default-user.png" alt="" />
+        </div>
+    </div>
+</div>
+
+<div class="card-body d-flex flex-wrap mx-auto"
+    style="justify-content: space-between;margin: 0px 5%;width:55%;padding:0px">
+    <div class="card mb-3 d-inline-flex  border-0" style="max-width: 400px; height: 100%; ">
+        <div class="row g-0 ">
+            <div class="col-md-4 p-4">
+                <i class="fas fa-book fa-8x" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body m-4">
+                    <h2 class="card-title">
+                        {% if durum0 %}
+                        {{durum0|length}}
+                        {% else %}
+                        0
+
+                        {% endif %}
+                    </h2>
+                    <p class="card-text">Mevcut Kitaplar</p>
+                </div>
+            </div>
+            <div class="col-md-8 text-center ">
+                <ol class='list-group ' style="text-align: left;list-style: inside;float:right">
+
+                    {% if durum0 %}
+
+                    {% for kitap in durum0 %}
+                    <li class='list-group-item border-0'>->{{kitap['Baslik']}} <br> - Alım Tarih:
+
+                        {{kitap['AlimTarih'].date()}}
+                    </li>
+                    {% endfor %}
+
+                    {% endif %}
+
+
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-3 d-inline-flex  border-0" style="max-width: 400px; height: 100%;">
+        <div class="row g-0">
+            <div class="col-md-4 p-4">
+                <i class="fas fa-book-reader fa-8x"></i>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body m-4">
+                    <h2 class="card-title">
+                        {% if durum1 %}
+                        {{durum1|length}}
+                        {% else %}
+                        0
+                        {% endif %}</h2>
+                    <p class="card-text">Teslim Edilmiş Kitaplar</p>
+                </div>
+            </div>
+            <div class="col-md-8 text-center ">
+                <ol class='list-group ' style="text-align: left;list-style: inside;float:right">
+                    {% if durum1 %}
+
+                    {% for kitap in durum1 %}
+                    <li class='list-group-item border-0'>->{{kitap['Baslik']}} <br> - Teslim Tarih:
+                        {{kitap['TeslimTarih'].date()}}</li>
+                    {% endfor %}
+
+                    {% endif %}
+
+
+                </ol>
+            </div>
+
+
+
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html'%} {% block content %}
+<div class="container register my-auto">
+    {% if error %}
+    <div class="alert alert-danger">{{error}}</div>
+    {% endif %}
+    {% if uyeData %}
+    <form action="" method="POST">
+        <div class="registerdivs my-auto">
+            <div class="d-flex justify-content-between">
+                <div class="mb-2">
+                    <label for="ad" class="form-label">İsim</label>
+                    <input type="text" required class="form-control border-0" id="ad" value="{{uyeData['ad']}}"
+                        name="ad" placeholder="İsim" />
+                </div>
+                <div class="mb-2">
+                    <label for="soyad" class="form-label">Soyisim</label>
+                    <input type="text" required class="form-control border-0" id="soyad" value="{{uyeData['soyad']}}"
+                        name="soyad" placeholder="Soyisim" />
+                </div>
+            </div>
+            <div class="mb-2">
+                <label for="telefon" class="form-label">Telefon Numarası</label>
+                <input type="text" required class="form-control border-0" id="telefon" value="{{uyeData['telefon']}}"
+                    name="telefon" placeholder="(0 5XX XXX XX XX)" />
+            </div>
+            <div class="mb-2">
+                <label for="email" class="form-label">E-mail</label>
+                <input required type="email" class="form-control border-0" id="email" value="{{uyeData['eposta']}}"
+                    name="email" placeholder="mail@gmail.com" />
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="mb-2">
+                    <label for="Iller" class="form-label">İl</label>
+                    <select required class="form-control border-0" id="Iller" name="il">
+                        <option hidden value="0">Lütfen Bir İl Seçiniz</option>
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <label for="Ilceler" class="form-label">İlçe</label>
+                    <select required class="form-control border-0" id="Ilceler" disabled="disabled" name="ilce">
+                        <option hidden value="0">Lütfen Önce bir İl seçiniz</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-2">
+                <label for="postakodu" class="form-label">Posta Kodu</label>
+                <input type="text" required class="form-control border-0" id="postakodu"
+                    value="{{uyeData['postakodu']}}" name="postakodu" placeholder="Posta Kodu" />
+            </div>
+            <div class="mb-2">
+                <label for="ikamet" class="form-label">İkamet Adresi</label>
+                <input type="text" required class="form-control border-0" id="ikamet"
+                    value="{{uyeData['İkamet_Adresi']}}" name="ikamet" placeholder="İkamet Adresi" />
+            </div>
+            <br>
+            <button class="btn btn-primary" type="submit">
+                <a style="color: white">Güncelle Ve Kaydet</a>
+            </button>
+        </div>
+
+
+    </form>
+
+    {% endif %}
+</div>
+
+{% endblock %}

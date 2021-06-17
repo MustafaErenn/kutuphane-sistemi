@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="container my-auto">
+    <div class="container mt-2" style="width: 30rem;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}}" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form action="" method="POST">
+            <div class="form-group">
+                <label for="exampleInputEmail1">E-posta:</label>
+                <input type="email" required class="form-control border-0" id="uyeeposta" name="uyeeposta"
+                    placeholder="E-Posta">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Telefon:</label>
+                <input type="tel" required class="form-control border-0" id="uyetel" name="uyetel"
+                    placeholder="Telefon Numarası">
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Uye Sil</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

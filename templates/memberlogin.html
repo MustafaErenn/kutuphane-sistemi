@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="login ">
+    {% if error %}
+    <div class="alert alert-danger">{{error}}</div>
+    {% endif %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{category}}" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <form action="" method="POST">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Üye Eposta</label>
+            <input type="email" class="form-control" value="{{request.form['memberemail']}}" name="memberemail"
+                placeholder="Eposta">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Üye Telefon</label>
+            <input type="tel" class="form-control" value="{{request.form['membertel']}}" name="membertel"
+                placeholder="Telefon">
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit"><a style="color: white;">Görüntüle
+                </a></button>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

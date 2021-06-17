@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" />
+    <script type=text/javascript src="{{
+        url_for('static', filename='main.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <title>Kütüphane Yönetim Sistemi</title>
+
+</head>
+
+<body class='bodyBG'>
+    <div id=" main">
+        <div>
+            <nav class="navbar navbar-expand-md" style="background-color: #243A51;  padding: 10px 10px">
+                <div id="mySidenav" class="sidenav" style='overflow: hidden;'>
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                    {% if 'username' in session %}
+                    <a style="font-size:20px" href="{{url_for('search')}}"><i class="fa fa-search"></i>&nbspTeslim
+                        Et</a>
+                    <a style="font-size:20px" href="{{url_for('receive_book')}}"><i
+                            class="fa fa-handshake"></i>&nbspTeslim
+                        Al</a>
+                    <a style="font-size:20px" href="{{url_for('add_exist')}}"><i
+                            class="bi bi-journal-plus"></i>&nbspKitap
+                        Ekle</a>
+                    <a style="font-size:20px" href="{{url_for('delete_book')}}"><i
+                            class="bi bi-journal-x"></i>&nbspKitap
+                        Sil</a>
+                    <a style="font-size:20px" href="{{url_for('member')}}"><i
+                            class="bi bi-person-bounding-box"></i>&nbspÜye
+                        Görüntüle
+                    </a>
+
+                    <a style="font-size:20px" href="{{url_for('register')}}"><i class="fa fa-user-plus"></i>&nbspÜye
+                        Kayıt
+                        Et</a>
+
+
+                    <a style="font-size:20px" href="{{url_for('delete_member')}}"><i
+                            class="fas fa-user-times"></i>&nbspÜye
+                        Sil
+                    </a>
+                    <a style="font-size:20px" href="{{url_for('logout')}}"><i
+                            class="bi bi-box-arrow-in-left"></i>&nbspÇıkış Yap</a>
+                    {% else %}
+                    <a style="font-size:20px" href="{{url_for('login')}}"><i class="fa fa-sign-in"></i>&nbspOturum
+                        Aç</a>
+                    <a style="font-size:20px" href="{{url_for('member')}}"><i
+                            class="bi bi-person-bounding-box"></i>&nbspÜye
+                        Görüntüle
+                    </a>
+                    {% endif %}
+                </div>
+                <div>
+                    <span style="font-size:18px;cursor:pointer; color: white;" onclick="openNav()">
+                        <span style="font-size: 22px; font-weight: 1000; padding-right: 15px;">&#9776;</span>Kütüphane
+                        Yönetim Sistemi</span>
+                </div>
+
+
+            </nav>
+        </div>
+
+        {% block content %}
+        {% endblock %}
+
+
+        <!-- 
+        <div style="text-align:center; background-color:#112B44" class="p-2 grey text-black-50 fixed-bottom">
+            <a style="color: white" class="" href="#main">Kütüphane Yönetim Sistemi</a>
+        </div> -->
+    </div>
+</body>
+
+</html>
