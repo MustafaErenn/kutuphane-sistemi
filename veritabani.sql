@@ -126,8 +126,7 @@ INSERT INTO `adresler` (`ID`, `Il`, `Ilce`, `PostaKodu`, `İkamet_Adresi`) VALUE
 (12, 'Çankırı', 'Yapraklı', '01686', 'çam mah. 11 sokak 12/16'),
 (13, 'Çanakkale', 'Gelibolu', '08568', 'murat mah. 98 sokak 12/12'),
 (15, 'Burdur', 'Tefenni', '01669', 'aslan mah. 323 sokak 12/25'),
-(17, 'Bitlis', 'Merkez', '12313', 'asdasdasd'),
-(20, 'Bursa', 'Nilüfer', '16130', 'Karaman Mah. Nilüfer/Bursa');
+(17, 'Bitlis', 'Merkez', '12313', 'asdasdasd');
 
 INSERT INTO `uyeler` (`ID`, `Ad`, `Soyad`, `Eposta`, `Telefon`, `AdresID`) VALUES
 (1, 'Selçuk', 'Şan', 'Selcuk@gmail.com', '05430000000', 1),
@@ -136,8 +135,7 @@ INSERT INTO `uyeler` (`ID`, `Ad`, `Soyad`, `Eposta`, `Telefon`, `AdresID`) VALUE
 (6, 'Selçuk', 'Şan', 'selcuk1330@gmail.com', '+3345345418', 7),
 (7, 'Selçuk', 'Şan', 'sel@gmail.com', '+905438478618', 8),
 (10, 'gurhan', 'tezer', 'gurhan@gmail.com', '+90512318', 15),
-(12, '123123', '123', 'asda@gmail.com', '+123123', 17),
-(15, 'Mustafa', 'Eren', 'mustafaeren790@gmail.com', '05079747815', 20);
+(12, '123123', '123', 'asda@gmail.com', '+123123', 17);
 
 
 INSERT INTO `kitaplar` (`ISBN`, `Baslik`, `Sayfa`, `Yayin`) VALUES
